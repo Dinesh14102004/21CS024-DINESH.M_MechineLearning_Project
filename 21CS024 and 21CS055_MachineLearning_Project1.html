@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Recommender</title>
+    <style>
+        body {
+    background-image: url('D:\png.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+    </style>
+    <script>
+        const movies = [
+            { title: "Spy x Family", ratings: [5, 5, 4, 5] },
+            { title: "Darling In The Franxx", ratings: [5, 5, 5, 5] },
+            { title: "My Hero Academy", ratings: [4, 5, 4, 5] },
+            { title: "Vinland Saga", ratings: [5, 5, 5, 4] },
+        ];
+       
+        function recommendMovies(userRatings) {
+            const recommendations = [];
+            for (const movie of movies) {
+                let similarityScore = 0;
+                for (let i = 0; i < userRatings.length; i++) {
+                    similarityScore += userRatings[i] * movie.ratings[i];
+                }
+                recommendations.push({ title: movie.title, score: similarityScore });
+            }
+            recommendations.sort((a, b) => b.score - a.score);
+            return recommendations.slice(0, 3);
+        }
+       
+        const userRatings = [5, 5, 4];
+        const recommendations = recommendMovies(userRatings);
+        console.log("Recommended Anime Movies For You:");
+        for (const recommendation of recommendations) {
+            console.log(recommendation.title);
+        }
+    </script>
+</head>
+<body>
+    <h1>Anime Recommender...🌸🌸🌸</h1> <!-- Title added -->
+</body>
+</html>
